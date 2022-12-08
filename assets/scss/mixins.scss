@@ -1,0 +1,12 @@
+//mixins
+@mixin card-style {
+    border-radius: $_20px;
+    background-color:$bg_light;
+    box-shadow: $default-box-shadow;
+    display: inline-block;
+    padding: $_20px;
+    transition: $default-transition;
+    &:hover{
+        background-color: var(--lightBtn);
+    }
+}

@@ -1,6 +1,9 @@
-body{
+html, html.transition{
+    transition: $default-transition;
+    font-family: $main-font;
     a{
         text-decoration: underline;
     }
     background-color: $bg_light;
+    color: $font_light;
 }

@@ -3,7 +3,7 @@
         <nuxt-link v-for="iphone in iphones" 
         :key="iphone" 
         :to="`/iphone/${iphone}`" 
-        class="shadow-lg border rounded-lg text-center p-8">
+        class="iphone-box">
             <h2>{{iphone}}</h2>
             <div class="flex justify-center">
                 <img width="200" src="/images/iphone.jpg" alt="iphone">
@@ -27,3 +27,9 @@
     const {data} = useFetch("/api/iphones");
     const iphones = data.value;
 </script>
+
+<style lang="scss">
+.iphone-box{
+    @include card-style;
+}
+</style>

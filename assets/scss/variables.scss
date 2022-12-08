@@ -1,1 +1,51 @@
-$bg_light: rgb(245, 243, 255);
+
+//css variables
+html {
+    --lightBtn: #FE016C;
+    --lightBg: #fff;
+    --lightColor: #232323;
+}
+//scss variables
+$bg_light: var(--lightBg);
+$font_light: var(--lightColor);
+
+$primary-color: white;
+$dark-color: #232323;
+$light-grey: #d0d0d0;
+
+$small-box-shadow: 0 4px 4px 0 rgba($dark-color, 0.2);
+
+$main-font: sans-serif;
+
+//PIXELS to EM sizes
+$_4px: 0.25em;
+$_8px: 0.5em;
+$_12px: 0.75em;
+$_16px: 1em;
+$_20px: 1.25em;
+$_24px: 1.5em;
+$_28px: 1.75em;
+$_32px: 2em;
+$_36px: 2.25em;
+$_40px: 2.5em;
+$_44px: 2.75em;
+$_48px: 3em;
+$_52px: 3.25em;
+$_56px: 3.5em;
+$_60px: 3.75em;
+$_64px: 4em;
+$_68px: 4.25em;
+$_72px: 4.5em;
+$_76px: 4.75em;
+$_80px: 5em;
+
+
+//responsive breakpoints
+$br-mobile: 640px;
+$br-tablet: 768px;
+$br-desktop: 1280px;
+$br-desktop-lg: 1440px;
+
+//effects variables
+$default-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);
+$default-transition: all 0.4s ease;

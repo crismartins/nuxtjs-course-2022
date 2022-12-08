@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
         app: {
             head: {
-            charset: 'utf-16',
-            viewport: 'width=500, initial-scale=1',
+            charset: 'UTF-8',
+            viewport: 'width=device-width, initial-scale=1.0',
             title: 'My App',
             meta: [
                 // <meta name="description" content="My amazing site">
@@ -11,20 +11,20 @@ export default defineNuxtConfig({
             ],
             }
         },
-        css: ["~/assets/css/tailwind.css", "@/assets/scss/main.scss"],
+        css: ["@/assets/scss/main.scss"],
         vite: {
             css: {
                 preprocessorOptions: {
                     scss: {
-                        additionalData: '@import "@/assets/scss/variables.scss";',
+                        additionalData: '@import "@/assets/scss/variables.scss"; @import "@/assets/scss/mixins.scss";',
                     }
                 }
             }
         },
-        postcss: {
-            plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
-            },
-        },
+        // postcss: {
+        //     plugins: {
+        //         tailwindcss: {},
+        //         autoprefixer: {},
+        //     },
+        // },
 })
