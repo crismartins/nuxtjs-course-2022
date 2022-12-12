@@ -5,6 +5,7 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+        modules: ['nuxt-icon'],
         app: {
             head: {
             charset: 'UTF-8',
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
                     include: [
                         resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
                     ]
-                })
+                }),
             ]
         },
         // postcss: {

@@ -1,12 +1,18 @@
 <template>
+    
     <div class="font-zooming">
-        <div class="size-selector" @click="fontSizeZoom(0)">A<small>100%</small></div>
-        <div class="size-selector" @click="fontSizeZoom(50)">A+<small>150%</small></div>
-        <div class="size-selector" @click="fontSizeZoom(100)">A++<small>200%</small></div>
+        <div class="size-selector" @click="fontSizeZoom(0)"><NormalFontSize /><small>100%</small></div>
+        <div class="size-selector" @click="fontSizeZoom(50)"><small>150%</small></div>
+        <div class="size-selector" @click="fontSizeZoom(100)"><IcreaseFontSize /><small>200%</small></div>
     </div>
 </template>
 
 <script setup>
+
+import { Icon } from '#components'
+
+const NormalFontSize = h(Icon, { name: 'mdi:format-text-variant' })
+const IcreaseFontSize = h(Icon, { name: 'mdi:format-font-size-increase' })
 
     function fontSizeZoom(value){
         if(value == 0){
@@ -44,7 +50,7 @@
         font-size: var(--fontZooming);
     }
     .font-zooming{
-        --selectorSize: 40px;
+        --selectorSize: 28px;
         &:before{
             left: calc(var(--alignHorizon) * var(--selectorSize));
         }
@@ -62,13 +68,14 @@
             border-radius: $_20px;;
             background: $primary-color;
             border: 1px solid $light-grey;
-            bottom: - 8px;
+            bottom: - 10px;
             height: 20px;
-            width: 20px;
+            width: 8px;
+            box-sizing: border-box;
             transition: $default-transition;
             box-shadow: $small-box-shadow;
             z-index: 2;
-            margin:0 calc(var(--selectorSize) - 30px);
+            margin:0 calc(var(--selectorSize) - 18px);
         }
         &:after{
             content:'';
@@ -77,6 +84,7 @@
             background-color: $light-grey;
             bottom: 0;
             height: 2px;
+            box-sizing: border-box;
             width: 100%;
             z-index: 0;
         }
@@ -105,7 +113,7 @@
                 width: fit-content;
                 font-size: $_12px;
                 opacity: 0;
-                top: 100%;
+                top: 110%;
                 position: absolute;
                 transition: $default-transition;
                 background-color:$dark-color;
@@ -129,7 +137,7 @@
             &:hover{
                 small{
                     opacity: 1;
-                    top:120%;
+                    top:140%;
                 }
             }
         }
