@@ -1,9 +1,15 @@
+
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'url'
+import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+        modules: ['nuxt-icon'],
         app: {
             head: {
-            charset: 'utf-16',
-            viewport: 'width=500, initial-scale=1',
+            charset: 'UTF-8',
+            viewport: 'width=device-width, initial-scale=1.0',
             title: 'My App',
             meta: [
                 // <meta name="description" content="My amazing site">
@@ -11,20 +17,27 @@ export default defineNuxtConfig({
             ],
             }
         },
-        css: ["~/assets/css/tailwind.css", "@/assets/scss/main.scss"],
+        css: ["@/assets/scss/main.scss"],
         vite: {
             css: {
                 preprocessorOptions: {
                     scss: {
-                        additionalData: '@import "@/assets/scss/variables.scss";',
+                        additionalData: '@import "@/assets/scss/variables.scss"; @import "@/assets/scss/mixins.scss";',
                     }
                 }
-            }
-        },
-        postcss: {
-            plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
             },
+            plugins: [
+                VueI18nVitePlugin({
+                    include: [
+                        resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
+                    ]
+                }),
+            ]
         },
+        // postcss: {
+        //     plugins: {
+        //         tailwindcss: {},
+        //         autoprefixer: {},
+        //     },
+        // },
 })
