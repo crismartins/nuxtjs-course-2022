@@ -70,17 +70,17 @@ const IcreaseFontSize = h(Icon, { name: 'mdi:format-font-size-increase' })
             border: 1px solid $light-grey;
             bottom: - 10px;
             height: 20px;
-            width: 8px;
+            width: 12px;
             box-sizing: border-box;
             transition: $default-transition;
             box-shadow: $small-box-shadow;
             z-index: 2;
-            margin:0 calc(var(--selectorSize) - 18px);
+            margin:0 calc(var(--selectorSize) - 20px);
         }
         &:after{
             content:'';
             position: absolute;
-            border-radius: $_20px;;
+            border-radius: $_20px;
             background-color: $light-grey;
             bottom: 0;
             height: 2px;
@@ -91,7 +91,7 @@ const IcreaseFontSize = h(Icon, { name: 'mdi:format-font-size-increase' })
         .size-selector{
             width: var(--selectorSize);
             height: var(--selectorSize);
-            padding: $_8px 0;
+            padding: 0 0 $_8px 0;
             display: flex;
             flex-direction: column;
             align-items: center;

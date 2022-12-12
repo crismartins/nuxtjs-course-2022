@@ -1,12 +1,21 @@
 <template>
     <label for="themeSwitcher" class="theme-switcher-wrapper">
-        <div class="light">Light</div>
-        <div class="dark">Dark</div>
+        <div class="light">
+            <LightIcon />
+        </div>
+        <div class="dark">
+            <DarkIcon />
+        </div>
         <input id="themeSwitcher" @click="switchTheme" class="theme-switcher" type="checkbox">
     </label>
 </template>
 
 <script setup>
+
+    import { Icon } from '#components'
+
+    const LightIcon = h(Icon, { name: 'mdi:white-balance-sunny' })
+    const DarkIcon = h(Icon, { name: 'mdi:weather-night' })
 
     function switchTheme(){
         if(document.querySelector('#themeSwitcher').checked){
@@ -29,7 +38,7 @@
     width: fit-content;
     background-color: $light-grey;
     cursor: pointer;
-    border-radius: $_12px;
+    border-radius: $_32px;
     position: relative;
     border: 4px solid $light-grey;
     margin: $_16px 0;
@@ -39,17 +48,21 @@
         width: 50%;
         height: 100%;
         background-color: var(--lightBg);
-        border-radius: $_12px;
+        border-radius: $_32px;
         z-index: 0;
         right: 50%;
         transition: $default-transition;
     }
     div{
-        font-size: $_12px;
-        padding: $_8px;
+        font-size: $_16px;
+        padding: $_4px;
+        width: 50%;
         position: relative;
         z-index: 1;
         transition: $default-transition;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         &.light{
             opacity: 1;
         }

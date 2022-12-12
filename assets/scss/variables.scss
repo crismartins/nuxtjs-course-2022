@@ -1,21 +1,24 @@
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,400;0,600;0,800;1,300;1,400;1,600;1,800&display=swap');
+$primary-font: 'Lato', sans-serif;
+$secondary-font: 'Poppins', sans-serif;
 
 //css variables
 html {
-    --lightBtn: #FE016C;
     --lightBg: #fff;
     --lightColor: #232323;
 }
+
 //scss variables
 $bg_light: var(--lightBg);
 $font_light: var(--lightColor);
 
-$primary-color: white;
-$dark-color: #232323;
-$light-grey: #d0d0d0;
+$primary-color:#74BD43;
+$secondary-color:#E7F3D8;
+$dark-color: #202929;
+$light-grey: #F5F5F5;
 
 $small-box-shadow: 0 4px 4px 0 rgba($dark-color, 0.2);
-
-$main-font: sans-serif;
 
 //PIXELS to EM sizes
 $_4px: 0.25em;

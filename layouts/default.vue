@@ -1,5 +1,5 @@
 <template>
-    <NavBar />
+    <CommomTheHeader />
     <!--nuxt page content-->
     <slot></slot>
 </template>

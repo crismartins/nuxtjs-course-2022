@@ -12,9 +12,6 @@
             <button class="ml-4" @click="logout">Logout</button>
         </div>
         <nuxt-link v-else to="/login">Login</nuxt-link>
-
-        <AccessibilityFontZooming />
-        <AccessibilityThemeSwitcher />
     </nav>
 </template>
 
