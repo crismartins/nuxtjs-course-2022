@@ -10,6 +10,7 @@
     </label>
 </template>
 
+
 <script setup>
 
     import { Icon } from '#components'
