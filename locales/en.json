@@ -1,4 +1,5 @@
 {
+    "logoName": "MyLogo",
     "hello": "Hello, {name}!",
     "language": "Language"
 }

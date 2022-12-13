@@ -2,48 +2,50 @@
     <form class="language-switcher">
         <label for="en" :class="$i18n.locale == 'en' ? 'active' : ''">
             <span>
-                en
+                <English />
             </span>
             <input v-model="$i18n.locale" type="radio" id="en" name="language" value="en">
         </label>
-        <label for="fr" :class="$i18n.locale == 'fr' ? 'active' : ''">
+        <label for="es" :class="$i18n.locale == 'es' ? 'active' : ''">
             <span>
-                fr
+                <Spanish />
             </span>
-            <input v-model="$i18n.locale" type="radio" id="fr" name="language" value="fr">
-        </label>
-        <label for="ja" :class="$i18n.locale == 'ja' ? 'active' : ''">
-            <span>
-                ja
-            </span>
-            <input v-model="$i18n.locale" type="radio" id="ja" name="language" value="ja">
+            <input v-model="$i18n.locale" type="radio" id="es" name="language" value="es">
         </label>
     </form>
 </template>
 
+<script setup>
+import { Icon } from '#components'
+
+const English = h(Icon, { name: 'circle-flags:us' })
+const Spanish = h(Icon, { name: 'circle-flags:es' })
+</script>
+
 <style lang="scss">
 .language-switcher{
     display: flex;
-    position: relative;
     align-items: center;
+    position: relative;
     label{
         cursor: pointer;
-        margin: $_4px;
-        padding: $_4px;
+        margin: $_16px $_8px;
         font-size: $_16px;
-        background-color: gray;
-        border-radius: $_12px;
         transition: $default-transition;
+        filter: grayscale(1);
         &.active{
-            color: red;
-            transform: scale(1.2);
+            filter: grayscale(0);
         }
         &:hover{
             transform: scale(1.4);
+            filter: grayscale(0);
         }
         span{
             text-transform: uppercase;
             font-weight: bold;
+            font-size: $_20px;
+            display: flex;
+            align-items: center;
         }
         input{
             display: none;
