@@ -1,7 +1,9 @@
 <template>
+    <div>
         <button @click="increment">Increment</button>
         <p class="text-3xl font-bold underline">{{count}}</p>
         <button @click="decrement">Decrement</button>
+    </div>
 </template>
 
 <script setup>

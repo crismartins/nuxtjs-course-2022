@@ -1,14 +1,16 @@
 <template>
-    <!-- <img :src="`/images/iphone-${route.params.name}.jpg`" alt=""> -->
-    <h2 class="text-3xl font-bold">iPhone {{name}}</h2>
-    <button @click="addToCart" class="p-3 bg-indigo-900 text-white rounded-md mt-5">
-        <span v-if="isInCart()">
-            Remove From Cart
-        </span>
-        <span v-else>
-            Buy Now
-        </span>
-    </button>
+    <div>
+        <!-- <img :src="`/images/iphone-${route.params.name}.jpg`" alt=""> -->
+        <h2 class="text-3xl font-bold">iPhone {{name}}</h2>
+        <button @click="addToCart" class="p-3 bg-indigo-900 text-white rounded-md mt-5">
+            <span v-if="isInCart()">
+                Remove From Cart
+            </span>
+            <span v-else>
+                Buy Now
+            </span>
+        </button>
+    </div>
 </template>
 
 <script setup>

@@ -3,6 +3,7 @@
         <h1 class="logo-wrapper">
             {{ $t('logoName') }}
         </h1>
+        <CommomNavBar />
         <nav class="accessibility-nav">
             <AccessibilityFontZooming />
             <AccessibilityThemeSwitcher />
@@ -17,6 +18,8 @@
         justify-content: space-between;
         padding: $_16px;
         .logo-wrapper{
+            display: flex;
+            align-items: center;
             font-size: $_20px;
         }
         .accessibility-nav{
