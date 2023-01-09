@@ -5,6 +5,11 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+        runtimeConfig: {
+            public: {
+                API_URL: process.env.API_URL
+            }
+        },
         modules: ['nuxt-icon'],
         app: {
             head: {
@@ -33,7 +38,8 @@ export default defineNuxtConfig({
                     include: [
                         resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
                     ]
-                }),
+                }), 
+                
             ]
         },
         // postcss: {

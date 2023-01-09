@@ -1,9 +1,176 @@
 html, html.transition{
     transition: $default-transition;
-    font-family: $secondary-font;
+    *{
+        font-family: $secondary-font;
+        box-sizing: border-box;
+    }
+    body{
+        padding: 0;
+        margin: 0;
+        color: var(--textColor);
+    }
     a{
         text-decoration: underline;
+        transition: $default-transition;
+        color: var(--secondaryColor);
     }
-    background-color: $bg_light;
-    color: $font_light;
+    img{
+        max-width: 100%;
+    }
+
+    //scroll
+    /* width */
+    ::-webkit-scrollbar {
+        width: $_8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: var(--primaryColorLighten);
+        border-radius: $_20px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--textColorLighten);
+    }
+
+    //progress
+    progress{
+        -webkit-appearance: none;
+         appearance: none;
+         height: $_12px;
+    }
+    ::-webkit-progress-bar {
+        background-color: var(--primaryColorLighten);
+        border-radius: $_20px;
+        // border: 2px solid var(--textColorLighten);
+    }
+    ::-webkit-progress-value {
+        background-color: var(--featuredColor);
+        border-radius: $_20px;
+    }
+    ::-moz-progress-bar {
+        background-color: blue;
+    }
+
+    //ul
+    ul,ol{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    //input styles
+    input[type = text], input[type = password], input[type = search], input[type = date], textarea{
+        border-radius: $_12px;
+        min-height: $_40px;
+        width: 100%;
+        border: 2px solid var(--primaryColorLighten);
+        padding: $_8px $_12px;
+        font-size: $_16px;
+        &:focus-visible{
+            outline: none;
+        }
+    }
+    //headlines
+    h1{
+        color: var(--primaryColorLighten);
+    }
+
+    //button styles
+    button{
+        border: 0;
+        cursor: pointer;
+        background-color: transparent;
+        &.primary-btn{
+            padding: $_12px $_20px;
+            border-radius: $_20px;
+            font-size: $_16px;
+            background-color: var(--secondaryColor);
+            color: var(--contrastColor);
+            font-weight: 600;
+        }
+        &.secondary-btn{
+            padding: $_12px $_20px;
+            border-radius: $_20px;
+            font-size: $_16px;
+            background-color: var(--primaryColor);
+            color: var(--contrastColor);
+            font-weight: 600;
+        }
+        &.achieve-btn{
+            padding: $_12px $_20px;
+            border-radius: $_20px;
+            font-size: $_16px;
+            background-color: var(--featuredColor);
+            color: var(--textColor);
+            font-weight: 600;
+        }
+        &:disabled{
+            background-color: var(--primaryColorLighten);
+            color: var(--contrastColor);
+            cursor: not-allowed;
+        }
+    }
+
+    //checkbox switch
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+          &:checked + .slider {
+            background-color: var(--featuredColor);
+          }
+          &:focus + .slider {
+            box-shadow: 0 0 1px var(--featuredColor);
+          }
+          
+          &:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+          }
+        }
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: var(--textColorLighten);
+          -webkit-transition: .4s;
+          transition: .4s;
+          border-radius: 34px;
+          &:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--contrastColor);
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+          }
+        }
+      }
+      
+      
+      
+      
+      
+      
 }
