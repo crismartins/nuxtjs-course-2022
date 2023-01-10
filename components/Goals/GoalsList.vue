@@ -98,6 +98,8 @@
                 </button>
             </footer>
         </GoalsModal>
+
+        <GoalsLoading v-if="isLoading" />
     </div>
 </template>
 <script setup>
@@ -105,11 +107,16 @@
     const config = useRuntimeConfig();
     const route = useRoute();
 
+    const isLoading = ref(false);
+
     const {data} = await useFetch(() => `${config.API_URL}/user/${route.params.id}/goals`);
     const goals = data.value.data;
     
     function editGoal(id, action){
         navigateTo(`/goals/goal-${id}-${action}`)
+        if (isLoading.value) return;
+
+        isLoading.value = true;
     }
 
     const subgoalsModal = ref(false)
@@ -156,6 +163,7 @@
     }
     
     async function achievedGoal(id){
+        
         const {data} = await useFetch(() => `${config.API_URL}/goal/${id}/status`, {
             method: 'PUT',
         });
@@ -163,10 +171,14 @@
     }
     
     async function achievedSubgoal(subgoal){
+        if (isLoading.value) return;
+
+        isLoading.value = true;
         const response = await useFetch(() => `${config.API_URL}/subgoal/${subgoal.id}/status`, {
             method: 'PUT',
         });
         if(response.data.value.success){
+            isLoading.value = false;
             goals = goals.map(goal => {
                 if(goal.id === selectedGoal.value.id){
                     goal.subgoals = goal.subgoals.map(item => {

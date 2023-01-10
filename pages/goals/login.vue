@@ -87,6 +87,8 @@
                 </button>
             </form>
         </div>
+
+        <GoalsLoading v-if="isLoading" />
     </div>
 </template>
 

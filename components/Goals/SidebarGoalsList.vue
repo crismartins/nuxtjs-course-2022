@@ -81,15 +81,14 @@
                     }
                     &:hover{
                         color: var(--secondaryColor);
+                        background-color: var(--primaryColorLighten);
+                        span,picture{
+                            color: var(--secondaryColor);
+                            background-color: var(--contrastColor);
+                        }
                     }
                     &.router-link-active{
-                        background-color: var(--primaryColorLighten);
                         color: var(--primaryColor);
-                        span,picture{
-                            border-color: var(--contrastColor);
-                            color: var(--featuredColor);
-                            background-color: var(--featuredColorLighten);
-                        }
                     }
                 }
             }
