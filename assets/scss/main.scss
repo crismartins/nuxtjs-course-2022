@@ -67,6 +67,18 @@ html, html.transition{
     }
 
     //input styles
+    .dp__input{
+        border-radius: $_12px;
+        min-height: $_40px;
+        width: 100%;
+        border: 2px solid var(--primaryColorLighten);
+        padding-top: $_8px;
+        padding-bottom: $_8px;
+        font-size: $_16px;
+        &:focus-visible{
+            outline: none;
+        }
+    }
     input[type = text], input[type = password], input[type = search], input[type = date], textarea{
         border-radius: $_12px;
         min-height: $_40px;

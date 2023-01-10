@@ -20,12 +20,12 @@
                 </div>
                 <div class="input-wrap">
                     <label for="">Deadline date</label>
-                    <Datepicker date-picker v-model="form.deadline" />
+                    <Datepicker date-fns-type v-model="form.deadline" />
                 </div>
 
                 
-                <button class="primary-btn">
-                    Add Goal
+                <button class="primary-btn" v-text="route.params.action == 'new' ? 'Add Goal' : 'Edit Goal' ">
+                    
                 </button>
             </form>
             <div class="preview">
@@ -34,7 +34,8 @@
                         {{ form.title }}
                     </h2>
                     <picture>
-                        <img :src="form.image" alt="" />
+                        <img v-if="form.image" :src="form.image" :alt="form.title" />
+                        <AppIcon v-else IconName="tabler:target-arrow"/>
                     </picture>
                     <p>
                         {{ form.description }}
@@ -78,7 +79,7 @@ const form = reactive( action == "new" ? {
     } : {
         title: singleGoal.title,
         description: singleGoal.description,
-        deadline: moment(singleGoal.deadline).format("MM-DD-YYYY"),
+        deadline: moment(singleGoal.deadline).format("YYYY-MM-DD"),
         image: singleGoal.image,
 })
 
@@ -98,7 +99,7 @@ async function onAddEditGoal(action){
     if(action == 'edit'){
         const {data, error} = await useFetch(editGoalUrl, {
             method: 'PUT',
-            body: form,
+            body: {...form, deadline:  moment(form.deadline).format("YYYY-MM-DD")},
         });
         if(error.value){
             response.value = error.value.data.message;
@@ -162,6 +163,10 @@ definePageMeta({
                 width: 100%;
                 min-height: 100%;
                 object-fit: cover;
+            }
+            svg{
+                font-size: $_64px;
+                color: var(--primaryColor);
             }
         }
     }

@@ -71,7 +71,7 @@
         <GoalsModal class="modal-container" v-if="subgoalsModal" modalTitle="Achieve Subgoals" @closeModal="closeSubgoals">
             <ul class="subgoals-wrapper">
                 <li v-for="subgoal in selectedGoal.subgoals" :key="subgoal.id" :class="{'done' : subgoal.done}">
-                    <label :for="'check-'+subgoal.id">
+                    <label>
                         <AppIcon v-if="subgoal.done" IconName="fluent:checkmark-12-filled"/>
                         <AppIcon v-else IconName="tabler:target-arrow"/> {{ subgoal.title }}
                     </label>
@@ -163,10 +163,10 @@
     }
     
     async function achievedSubgoal(subgoal){
-        const {success} = await useFetch(() => `${config.API_URL}/subgoal/${subgoal.id}/status`, {
+        const response = await useFetch(() => `${config.API_URL}/subgoal/${subgoal.id}/status`, {
             method: 'PUT',
         });
-        if(success){
+        if(response.data.value.success){
             goals = goals.map(goal => {
                 if(goal.id === selectedGoal.value.id){
                     goal.subgoals = goal.subgoals.map(item => {

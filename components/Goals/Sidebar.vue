@@ -8,10 +8,13 @@
                 <h3>Hey {{user.name}}!</h3>
                 <p>Let's check your Goals</p>
             </header>
-            <div class="add-goals-btn">
-                <button class="primary-btn" @click="addGoal(user.id, 'new')">
-                    <AppIcon IconName="fluent:add-12-filled"/> Add Goal
+            <div class="add-goals-btn"  @click="addGoal(user.id, 'new')">
+                <button class="primary-btn">
+                    <AppIcon IconName="fluent:add-12-filled"/>
                 </button>
+                <span>
+                    Add New Goal
+                </span>
             </div>
 
             <SidebarGoalsList />
@@ -77,9 +80,21 @@
                 }
             }
             .add-goals-btn{
-                padding: $_20px;
+                padding: $_28px;
+                transition: $default-transition;
+                cursor: pointer;
                 button{
-                    width: 100%;
+                    width: $_40px;
+                    height: $_40px;
+                    padding: 0;
+                }
+                span{
+                    font-weight: 600;
+                    padding-left: $_8px;
+                }
+                &:hover{
+                    color: var(--secondaryColor);
+                    background-color: var(--primaryColorLighten);
                 }
             }
         }

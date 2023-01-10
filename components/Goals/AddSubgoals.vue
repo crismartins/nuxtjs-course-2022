@@ -6,7 +6,10 @@
                 <p class="response">{{response}}</p>
             </div>
             <small v-for="selected in selectedSubgoals" :key="selected">
-                {{selected.id}} {{ selected.title }} <span @click="removeSubgoal(selected.id)">x</span>
+                {{selected.id}} {{ selected.title }} 
+                <span @click="removeSubgoal(selected.id)">
+                    <AppIcon IconName="fluent:dismiss-circle-16-filled"/>
+                </span>
             </small>
             <div class="input-add">
                 <input type="text" @focus="openDropdown" v-model="subgoal" placeholder="Add subgoals..." />
@@ -46,16 +49,7 @@ function openDropdown(){
     searchResults.value = true
 }
 
-function filteredList() {
-  return subgoals.filter((fruit) =>
-    fruit.toLowerCase().includes(search.value.toLowerCase())
-  );
-}
-// function addSubgoal(value){
-//     selectedSubgoals.value.push(value)
-// }
 async function removeSubgoal(id){
-    // selectedSubgoals.value.pop(value)
     const {data} = await useFetch(`${config.API_URL}/subgoal/${id}/delete`, {
         method: 'DELETE',
     });
@@ -79,6 +73,10 @@ async function removeSubgoal(id){
             border-radius: $_20px;
             display: inline-block;
             color: var(--primaryColor);
+            span{
+                cursor: pointer;
+                color: var(--secondaryColor);
+            }
         }
         .input-add{
             position: relative;
