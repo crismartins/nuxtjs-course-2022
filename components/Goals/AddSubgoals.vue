@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
 const subgoal = ref('')
 
 const props = defineProps(['subgoals', 'goalId'])
@@ -29,7 +30,7 @@ const form = reactive({
 })
 
 async function onAddSubGoal(){
-    const {data, error} = await useFetch('http://10.0.8.149:8000/goal/create/subgoal', {
+    const {data, error} = await useFetch(`${config.API_URL}/goal/create/subgoal`, {
         method: 'POST',
         body: form,
     })
@@ -55,7 +56,7 @@ function filteredList() {
 // }
 async function removeSubgoal(id){
     // selectedSubgoals.value.pop(value)
-    const {data} = await useFetch(`http://10.0.8.149:8000/subgoal/${id}/delete`, {
+    const {data} = await useFetch(`${config.API_URL}/subgoal/${id}/delete`, {
         method: 'DELETE',
     });
     window.location.reload();

@@ -71,11 +71,11 @@
         <GoalsModal class="modal-container" v-if="subgoalsModal" modalTitle="Achieve Subgoals" @closeModal="closeSubgoals">
             <ul class="subgoals-wrapper">
                 <li v-for="subgoal in selectedGoal.subgoals" :key="subgoal.id" :class="{'done' : subgoal.done}">
-                    <label :for="'check-'+subgoal.id" @click="achievedSubgoal(subgoal)">
+                    <label :for="'check-'+subgoal.id">
                         <AppIcon v-if="subgoal.done" IconName="fluent:checkmark-12-filled"/>
                         <AppIcon v-else IconName="tabler:target-arrow"/> {{ subgoal.title }}
                     </label>
-                    <span class="switch">
+                    <span class="switch" @click="achievedSubgoal(subgoal)">
                         <input type="checkbox" :checked="subgoal.done" :id="'check-'+subgoal.id">
                         <span class="slider"></span>
                     </span>
@@ -148,7 +148,7 @@
     }
 
     
-    async function confirmDeleteGoal(id){
+    async function confirmDeleteGoal({id}){
         const {data} = await useFetch(() => `${config.API_URL}/goal/${id}/delete`, {
             method: 'DELETE',
         });
@@ -163,9 +163,22 @@
     }
     
     async function achievedSubgoal(subgoal){
-        const {data} = await useFetch(() => `${config.API_URL}/subgoal/${subgoal.id}/status`, {
+        const {success} = await useFetch(() => `${config.API_URL}/subgoal/${subgoal.id}/status`, {
             method: 'PUT',
         });
+        if(success){
+            goals = goals.map(goal => {
+                if(goal.id === selectedGoal.value.id){
+                    goal.subgoals = goal.subgoals.map(item => {
+                        if(item.id === subgoal.id){
+                            subgoal.done = !subgoal.done;
+                        }
+                        return item
+                    })
+                }
+                return goal
+            })
+        }
     }
 </script>
 <style lang="scss" scoped>

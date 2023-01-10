@@ -8,19 +8,19 @@
                 </div>
                 <div class="input-wrap">
                     <label for="">Title</label>
-                    <input v-model="form.title" type="text" placeholder="Learn playing drums"  />
+                    <input v-model="form.title" type="text" placeholder="Goal Title..."  />
                 </div>
                 <div class="description-wrap">
                     <label for="">Short Description</label>
-                    <textarea v-model="form.description" placeholder="Learn how to play drums"></textarea>
+                    <textarea v-model="form.description" placeholder="Goal Description..."></textarea>
                 </div>
                 <div class="input-wrap image-url">
                     <label for="">Image URL</label>
-                    <input v-model="form.image" type="search" />
+                    <input v-model="form.image" placeholder="Image URL..." type="search" />
                 </div>
                 <div class="input-wrap">
                     <label for="">Deadline date</label>
-                    <input v-model="form.deadline" type="date"  />
+                    <Datepicker date-picker v-model="form.deadline" />
                 </div>
 
                 
@@ -47,7 +47,12 @@
 </template>
 
 <script setup>
+
 import {ref} from "vue"
+
+import moment from 'moment';
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 const config = useRuntimeConfig();
 const route = useRoute();
@@ -73,7 +78,7 @@ const form = reactive( action == "new" ? {
     } : {
         title: singleGoal.title,
         description: singleGoal.description,
-        deadline: singleGoal.deadline,
+        deadline: moment(singleGoal.deadline).format("MM-DD-YYYY"),
         image: singleGoal.image,
 })
 

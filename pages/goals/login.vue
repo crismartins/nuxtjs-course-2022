@@ -95,12 +95,14 @@ definePageMeta({
     layout: 'clean'
 })
 
+const config = useRuntimeConfig();
+
 let newUser = ref(false)
 let passwordVisible = ref(false)
 let InvalidAlert = ref(false)
 
-const registerUrl = "http://10.0.8.149:8000/register";
-const loginUrl = "http://10.0.8.149:8000/login";
+const registerUrl = `${config.API_URL}/register`;
+const loginUrl = `${config.API_URL}/login`;
 
 const isLoading = ref(false);
 

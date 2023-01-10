@@ -38,7 +38,9 @@
     </div>
 </template>
 <script setup>
-    const {data} = useFetch(`http://10.0.8.149:8000/user/${route.params.id}/goals`);
+    const config = useRuntimeConfig();
+
+    const {data} = useFetch(`${config.API_URL}/user/${route.params.id}/goals`);
     const goals = data.value;
 
     function daysToGo(deadline){
